@@ -1,3 +1,8 @@
 export default function Visualization() {
-  return <p> Visualization </p>;
+  return (
+    <div>
+      <h1>Visualization</h1>
+      {/* <LineChart /> */}
+    </div>
+  );  
 }
