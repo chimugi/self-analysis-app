@@ -13,6 +13,12 @@
 /.next/
 /out/
 
+# next.js cache
+.next/cache
+
+# next.js static files
+.next/static
+
 # production
 /build
 
@@ -26,7 +32,11 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # vercel
 .vercel
@@ -34,3 +44,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# trace files
+trace
+
+# Prisma database file
+prisma/dev.db
