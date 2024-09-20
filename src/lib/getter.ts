@@ -8,3 +8,7 @@ export async function getLatestId() {
 
   return latestExperience ? latestExperience.id + 1 : 1;
 }
+
+export async function getExperiences() {
+  return await prisma.experiences.findMany();
+}
