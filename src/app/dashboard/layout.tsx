@@ -6,8 +6,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex h-screen flex-col md:flex-row md:voerflow-hidden">
-      <div className="w-full flex-none md:w-64">
+    <div className="flex h-screen flex-row overflow-hidden">
+      <div className="flex-none w-64">
         <SideNav />
       </div>
       <div>

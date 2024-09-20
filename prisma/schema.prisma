@@ -11,7 +11,7 @@ datasource db {
 }
 
 model experiences {
-  id            Int      @id @default(autoincrement())
+  id            String   @id
   title         String
   experience    String
   positivePoint Int

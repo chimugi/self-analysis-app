@@ -8,7 +8,7 @@ const links = [
 
 export default function SideNav() {
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <Box sx={{ width: '30%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav>
         { links.map(link => (
           <List key={link.name}>
