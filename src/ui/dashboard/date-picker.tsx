@@ -1,8 +1,9 @@
 'use client';
 import { useState } from "react";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-export default function MyDatePicker({ id }: { id: string }) {
+export default function MyDatePicker({ id }: { id: 'startDate' | 'endDate' }) {
   const [date, setDate] = useState<Date | null>(null);
 
   return (

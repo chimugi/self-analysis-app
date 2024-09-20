@@ -31,3 +31,29 @@ export async function addExperience(formData: FormData) {
   revalidatePath('/dashboard/experiences');
   redirect('/dashboard/experiences');
 }
+
+const ResumesSchema = z.object({
+  id: z.string(),
+  belongsTo: z.string(),
+  startDate: z.string(),
+  endDate: z.string(),
+});
+
+export async function addResume(formData: FormData) {
+  const data = Object.fromEntries(formData.entries());
+  const id = new Date().getTime().toString();
+  
+  const resume = Object.assign({}, data, { id });
+  console.log(resume);
+
+  const resumeData = ResumesSchema.parse(resume);
+  const startDate = new Date(resumeData.startDate).toISOString();
+  const endDate = new Date(resumeData.endDate).toISOString();
+
+  await prisma.resumes.create({
+    data: { ...resumeData, startDate, endDate },
+  });
+
+  revalidatePath('/dashboard/resumes');
+  redirect('/dashboard/resumes');
+}

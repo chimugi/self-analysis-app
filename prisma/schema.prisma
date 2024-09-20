@@ -19,3 +19,10 @@ model experiences {
   startDate     DateTime
   endDate       DateTime
 }
+
+model resumes {
+  id        String   @id
+  belongsTo String
+  startDate DateTime
+  endDate   DateTime
+}

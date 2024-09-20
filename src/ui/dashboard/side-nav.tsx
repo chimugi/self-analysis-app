@@ -2,6 +2,7 @@ import { Box, List, ListItemButton, ListItemText } from "@mui/material";
 
 const links = [
   { name: 'Home', href: '/dashboard' },
+  { name: 'Resumes', href: '/dashboard/resumes' },
   { name: 'Experiences', href: '/dashboard/experiences' },
   { name: 'Visualization', href: '/dashboard/visualization' },
 ];

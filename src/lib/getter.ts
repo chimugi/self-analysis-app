@@ -12,3 +12,7 @@ export async function getLatestId() {
 export async function getExperiences() {
   return await prisma.experiences.findMany();
 }
+
+export async function getResumes() {
+  return await prisma.resumes.findMany();
+}

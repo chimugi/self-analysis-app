@@ -49,4 +49,5 @@ next-env.d.ts
 trace
 
 # Prisma database file
-prisma/dev.db
+prisma/dev.db*
+prisma/migrations/*

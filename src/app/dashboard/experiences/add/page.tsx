@@ -1,7 +1,6 @@
 import { addExperience } from "@/lib/actions";
-import MyDatePicker from "@/ui/dashboard/experiences/date-picker";
-import MyInput from "@/ui/dashboard/experiences/input";
-import "react-datepicker/dist/react-datepicker.css";
+import MyDatePicker from "@/ui/dashboard/date-picker";
+import MyInput from "@/ui/dashboard/input";
 
 export default function Add() {
   return (
