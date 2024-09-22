@@ -22,7 +22,7 @@ export default function DeleteAction(
       <Button variant="outlined" onClick={handleClickOpen}>
         Delete
       </Button>
-      <Dialog open={open} onClose={handleClose} inert={!open}>
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle> Are you Sure? </DialogTitle>
         <DialogContent>
           <DialogContentText>
