@@ -39,10 +39,10 @@ export async function updateExperience(formData: FormData) {
   const endDate = new Date(experience.endDate).toISOString();
 
   await prisma.experiences.update({
-    where: { id},
+    where: { id },
     data: { ...experience, startDate, endDate },
   });
-  
+
   revalidatePath('/dashboard/experiences');
   redirect('/dashboard/experiences');
 }
@@ -67,6 +67,21 @@ export async function addResume(formData: FormData) {
 
   await prisma.resumes.create({
     data: { ...resumeData, startDate, endDate },
+  });
+
+  revalidatePath('/dashboard/resumes');
+  redirect('/dashboard/resumes');
+}
+
+export async function updateResume(formData: FormData) {
+  const resume = ResumesSchema.parse(Object.fromEntries(formData.entries()));
+  const id = resume.id;
+  const startDate = new Date(resume.startDate).toISOString();
+  const endDate = new Date(resume.endDate).toISOString();
+
+  await prisma.resumes.update({
+    where: { id },
+    data: { ...resume, startDate, endDate },
   });
 
   revalidatePath('/dashboard/resumes');

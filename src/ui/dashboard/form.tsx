@@ -27,6 +27,7 @@ export default function MyForm({ columns, onSubmit }: {
   const id = columns.find((col) => col.type === 'id')?.defaultValue;
   return (
     <form action={onSubmit}>
+      {/* TODO: fix interface for id */}
       {id && <input id="id" name="id" type="hidden" value={id} />}
       {columns.map((col) => {
         if (col.type === 'input') {

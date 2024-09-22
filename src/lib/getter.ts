@@ -22,3 +22,9 @@ export async function getExperienceById(id: string) {
 export async function getResumes() {
   return await prisma.resumes.findMany();
 }
+
+export async function getResumeById(id: string) {
+  return await prisma.resumes.findFirst({
+    where: { id },
+  });
+}
