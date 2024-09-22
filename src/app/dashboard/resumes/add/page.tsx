@@ -1,14 +1,12 @@
 import { addResume } from "@/lib/actions";
-import MyInput from "@/ui/dashboard/input";
-import MyDatePicker from "@/ui/dashboard/date-picker";
+import MyForm from "@/ui/dashboard/form";
 
 export default function Add() {
   return (
-    <form action={addResume}>
-      <MyInput id="belongsTo" />
-      <MyDatePicker id="startDate" />
-      <MyDatePicker id="endDate" />
-      <button type="submit"> Submit </button>
-    </form>
+    <MyForm columns={[
+      { name: 'belongsTo', type: 'input' },
+      { name: 'startDate', type: 'date-picker' },
+      { name: 'endDate', type: 'date-picker' },
+    ]} onSubmit={addResume} />
   );
 }
