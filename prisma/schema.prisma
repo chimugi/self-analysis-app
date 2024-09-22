@@ -16,8 +16,7 @@ model experiences {
   experience    String
   positivePoint Int
   negativePoint Int
-  startDate     DateTime
-  endDate       DateTime
+  eventDate     DateTime
 }
 
 model resumes {

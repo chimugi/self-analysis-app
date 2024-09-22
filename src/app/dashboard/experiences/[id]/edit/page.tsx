@@ -13,8 +13,7 @@ export default async function Edit({ params }: { params: { id: string } }) {
       { name: 'experience', type: 'input', defaultValue: experience?.experience },
       { name: 'positivePoint', type: 'input', defaultValue: experience?.positivePoint },
       { name: 'negativePoint', type: 'input', defaultValue: experience?.negativePoint },
-      { name: 'startDate', type: 'date-picker', defaultValue: experience?.startDate },
-      { name: 'endDate', type: 'date-picker', defaultValue: experience?.endDate },
+      { name: 'eventDate', type: 'date-picker', defaultValue: experience?.eventDate },
     ]} onSubmit={updateExperience} />
   );
 }

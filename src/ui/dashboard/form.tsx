@@ -13,7 +13,7 @@ type InputColumn = {
 };
 
 type DatePickerColumn = {
-  name: 'startDate' | 'endDate';
+  name: 'eventDate' | 'startDate' | 'endDate';
   type: 'date-picker';
   defaultValue?: Date;
 };

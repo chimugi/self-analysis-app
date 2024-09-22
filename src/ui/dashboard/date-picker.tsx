@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function MyDatePicker(
-  { id, defaultValue }: { id: 'startDate' | 'endDate', defaultValue?: Date}
+  { id, defaultValue }: { id: 'eventDate' | 'startDate' | 'endDate', defaultValue?: Date}
 ) {
   const [date, setDate] = useState<Date | null>(defaultValue ?? null);
 

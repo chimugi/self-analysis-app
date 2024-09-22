@@ -10,8 +10,7 @@ const ExperienceSchema = z.object({
   experience: z.string(),
   positivePoint: z.coerce.number(),
   negativePoint: z.coerce.number(),
-  startDate: z.string(),
-  endDate: z.string(),
+  eventDate: z.string(),
 });
 
 export async function addExperience(formData: FormData) {
@@ -21,11 +20,10 @@ export async function addExperience(formData: FormData) {
   const exp = Object.assign({}, data, { id });
 
   const experience = ExperienceSchema.parse(exp);
-  const startDate = new Date(experience.startDate).toISOString();
-  const endDate = new Date(experience.endDate).toISOString();
+  const eventDate = new Date(experience.eventDate).toISOString();
 
   await prisma.experiences.create({
-    data: { ...experience, startDate, endDate },
+    data: { ...experience, eventDate},
   });
 
   revalidatePath('/dashboard/experiences');
@@ -35,12 +33,11 @@ export async function addExperience(formData: FormData) {
 export async function updateExperience(formData: FormData) {
   const experience = ExperienceSchema.parse(Object.fromEntries(formData.entries()));
   const id = experience.id;
-  const startDate = new Date(experience.startDate).toISOString();
-  const endDate = new Date(experience.endDate).toISOString();
+  const eventDate = new Date(experience.eventDate).toISOString();
 
   await prisma.experiences.update({
     where: { id },
-    data: { ...experience, startDate, endDate },
+    data: { ...experience, eventDate },
   });
 
   revalidatePath('/dashboard/experiences');

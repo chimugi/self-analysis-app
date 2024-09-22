@@ -8,8 +8,7 @@ export default function Add() {
       { name: 'experience', type: 'input' },
       { name: 'positivePoint', type: 'input' },
       { name: 'negativePoint', type: 'input' },
-      { name: 'startDate', type: 'date-picker' },
-      { name: 'endDate', type: 'date-picker' },
+      { name: 'eventDate', type: 'date-picker' },
     ]} onSubmit={addExperience} />
   );
 }

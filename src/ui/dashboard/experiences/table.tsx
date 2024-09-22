@@ -14,8 +14,7 @@ export default async function ExperiencesTable() {
             <TableCell>Experience</TableCell>
             <TableCell>Positive Points</TableCell>
             <TableCell>Negative Points</TableCell>
-            <TableCell>Start Date</TableCell>
-            <TableCell>End Date</TableCell>
+            <TableCell>Event Date</TableCell>
             <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
@@ -26,8 +25,7 @@ export default async function ExperiencesTable() {
               <TableCell>{experience.experience}</TableCell>
               <TableCell>{experience.positivePoint}</TableCell>
               <TableCell>{experience.negativePoint}</TableCell>
-              <TableCell>{experience.startDate.toLocaleDateString()}</TableCell>
-              <TableCell>{experience.endDate.toLocaleDateString()}</TableCell>
+              <TableCell>{experience.eventDate.toLocaleDateString()}</TableCell>
               <TableCell>
                 <Button variant="contained" href={`/dashboard/experiences/${experience.id}/edit`}>
                   Edit
