@@ -1,5 +1,7 @@
 import { getExperiences } from "@/lib/getter";
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import DeleteAction from "../delete-action";
+import { deleteExperience } from "@/lib/actions";
 
 export default async function ExperiencesTable() {
   const experiences = await getExperiences();
@@ -30,9 +32,9 @@ export default async function ExperiencesTable() {
                 <Button variant="contained" href={`/dashboard/experiences/${experience.id}/edit`}>
                   Edit
                 </Button>
-                <Button variant="contained" href={`/dashboard/experiences/${experience.id}/delete`}>
-                  Delete
-                </Button>
+                <DeleteAction id={experience.id} action={deleteExperience}>
+                  title: {experience.title}
+                </DeleteAction>
               </TableCell>
             </TableRow>
           ))}

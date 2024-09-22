@@ -1,5 +1,7 @@
 import { getResumes } from "@/lib/getter";
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import DeleteAction from "../delete-action";
+import { deleteResume } from "@/lib/actions";
 
 export default async function ResumesTable() {
   // TODO: Implement the table to remove type assertion.
@@ -26,9 +28,9 @@ export default async function ResumesTable() {
                 <Button variant="contained" href={`/dashboard/resumes/${resume.id}/edit`}>
                   Edit
                 </Button>
-                <Button variant="contained" href={`/dashboard/resumes/${resume.id}/delete`}>
-                  Delete
-                </Button>
+                <DeleteAction id={resume.id} action={deleteResume}>
+                  title: {resume.belongsTo}
+                </DeleteAction>
               </TableCell>
             </TableRow>
           ))}

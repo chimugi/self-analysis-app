@@ -47,6 +47,12 @@ export async function updateExperience(formData: FormData) {
   redirect('/dashboard/experiences');
 }
 
+export async function deleteExperience(id: string) {
+  await prisma.experiences.delete({ where: { id } });
+  revalidatePath('/dashboard/experiences');
+  redirect('/dashboard/experiences');
+}
+
 const ResumesSchema = z.object({
   id: z.string(),
   belongsTo: z.string(),
@@ -84,6 +90,12 @@ export async function updateResume(formData: FormData) {
     data: { ...resume, startDate, endDate },
   });
 
+  revalidatePath('/dashboard/resumes');
+  redirect('/dashboard/resumes');
+}
+
+export async function deleteResume(id: string) {
+  await prisma.resumes.delete({ where: { id } });
   revalidatePath('/dashboard/resumes');
   redirect('/dashboard/resumes');
 }
