@@ -32,6 +32,21 @@ export async function addExperience(formData: FormData) {
   redirect('/dashboard/experiences');
 }
 
+export async function updateExperience(formData: FormData) {
+  const experience = ExperienceSchema.parse(Object.fromEntries(formData.entries()));
+  const id = experience.id;
+  const startDate = new Date(experience.startDate).toISOString();
+  const endDate = new Date(experience.endDate).toISOString();
+
+  await prisma.experiences.update({
+    where: { id},
+    data: { ...experience, startDate, endDate },
+  });
+  
+  revalidatePath('/dashboard/experiences');
+  redirect('/dashboard/experiences');
+}
+
 const ResumesSchema = z.object({
   id: z.string(),
   belongsTo: z.string(),

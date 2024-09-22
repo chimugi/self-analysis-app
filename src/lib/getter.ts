@@ -13,6 +13,12 @@ export async function getExperiences() {
   return await prisma.experiences.findMany();
 }
 
+export async function getExperienceById(id: string) {
+  return await prisma.experiences.findFirst({
+    where: { id },
+  });
+}
+
 export async function getResumes() {
   return await prisma.resumes.findMany();
 }

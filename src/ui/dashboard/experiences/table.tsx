@@ -1,5 +1,5 @@
 import { getExperiences } from "@/lib/getter";
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
 export default async function ExperiencesTable() {
   const experiences = await getExperiences();
@@ -14,6 +14,7 @@ export default async function ExperiencesTable() {
             <TableCell>Negative Points</TableCell>
             <TableCell>Start Date</TableCell>
             <TableCell>End Date</TableCell>
+            <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -25,6 +26,14 @@ export default async function ExperiencesTable() {
               <TableCell>{experience.negativePoint}</TableCell>
               <TableCell>{new Date(experience.startDate).toLocaleDateString()}</TableCell>
               <TableCell>{new Date(experience.endDate).toLocaleDateString()}</TableCell>
+              <TableCell>
+                <Button variant="contained" href={`/dashboard/experiences/${experience.id}/edit`}>
+                  Edit
+                </Button>
+                <Button variant="contained" href={`/dashboard/experiences/${experience.id}/delete`}>
+                  Delete
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

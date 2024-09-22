@@ -1,8 +1,10 @@
-export default function MyInput({ id }: { id: string }) {
+export default function MyInput(
+  { id, defaultValue }: { id: string, defaultValue?: string | number }
+) {
   return (
     <div>
       <label> {id}: </label>
-      <input id={id} name={id} type="text" />
+      <input id={id} name={id} type="text" defaultValue={defaultValue} />
     </div>
   );
 }

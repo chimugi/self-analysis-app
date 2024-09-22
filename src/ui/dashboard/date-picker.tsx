@@ -3,8 +3,10 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function MyDatePicker({ id }: { id: 'startDate' | 'endDate' }) {
-  const [date, setDate] = useState<Date | null>(null);
+export default function MyDatePicker(
+  { id, defaultValue }: { id: 'startDate' | 'endDate', defaultValue?: Date}
+) {
+  const [date, setDate] = useState<Date | null>(defaultValue ?? null);
 
   return (
     <div>
