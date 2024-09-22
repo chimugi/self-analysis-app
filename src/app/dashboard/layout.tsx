@@ -10,7 +10,7 @@ export default function RootLayout({
       <div className="flex-none w-64">
         <SideNav />
       </div>
-      <div>
+      <div className="flex-grow h-full">
         {children}
       </div>
     </div>
