@@ -1,11 +1,12 @@
 import { Experience } from "./definission";
 import { getExperiences, getResumes } from "./getter";
 
-
-export function generateLabels(startYear: number, endYear: number): Date[] {
+export function generateLabels(startYear: number, endYear: number): string[] {
   return Array.from({ length: endYear - startYear + 1 }, (_, i) => {
     const year = startYear + i;
-    return Array.from({ length: 12 }, (_, j) => new Date(year, j));
+    return Array.from({ length: 12 }, (_, j) => {
+      return `${year}-${j + 1}`;
+    });
   }).flat();
 }
 
@@ -26,7 +27,7 @@ export function generatePoints(startYear: number, endYear: number, experiences: 
 }
 
 export  async function getMotivationData(): Promise<{
-  labels: Date[];
+  labels: string[];
   positivePoints: (number | null)[];
   negativePoints: (number | null)[];
 }> {

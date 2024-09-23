@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 const LineChart = ({ labels, positivePoints, negativePoints }: {
-  labels: Date[];
+  labels: string[];
   positivePoints: (number | null)[];
   negativePoints: (number | null)[];
 }) => {
@@ -16,18 +16,20 @@ const LineChart = ({ labels, positivePoints, negativePoints }: {
       {
         label: 'Positive',
         data: positivePoints,
-        fill: false,
+        fill: true,
         backgroundColor: 'rgba(75,192,192,0.2)',
         borderColor: 'rgba(75,192,192,1)',
         spanGaps: true,
+        tension: 0.1,
       },
       {
         label: 'Negative',
         data: negativePoints,
-        fill: false,
+        fill: true,
         backgroundColor: 'rgba(255,99,132,0.2)',
         borderColor: 'rgba(255,99,132,1)',
         spanGaps: true,
+        tension: 0.1,
       }
     ],
   };
