@@ -3,6 +3,7 @@ import { z } from "zod";
 import prisma from "./prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import cuid from "cuid";
 
 const ExperienceSchema = z.object({
   id: z.string(),
@@ -15,7 +16,7 @@ const ExperienceSchema = z.object({
 
 export async function addExperience(formData: FormData) {
   const data = Object.fromEntries(formData.entries());
-  const id = new Date().getTime().toString();
+  const id = cuid();
   
   const exp = Object.assign({}, data, { id });
 
@@ -59,7 +60,7 @@ const ResumesSchema = z.object({
 
 export async function addResume(formData: FormData) {
   const data = Object.fromEntries(formData.entries());
-  const id = new Date().getTime().toString();
+  const id = cuid();
   
   const resume = Object.assign({}, data, { id });
   console.log(resume);
