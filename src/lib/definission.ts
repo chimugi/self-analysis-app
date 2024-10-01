@@ -13,3 +13,9 @@ export type Resume = {
   startDate: Date;
   endDate: Date;
 };
+
+export type User = {
+  id: string;
+  email: string;
+  password: string;
+};

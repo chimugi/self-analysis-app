@@ -1,5 +1,7 @@
 import SideNav from "@/ui/dashboard/side-nav";
 
+export const experimental_ppr = true;
+
 export default function RootLayout({
   children,
 }: Readonly<{

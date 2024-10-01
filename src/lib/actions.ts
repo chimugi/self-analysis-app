@@ -4,6 +4,8 @@ import prisma from "./prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import cuid from "cuid";
+import { signIn } from "../auth";
+import { AuthError } from "next-auth";
 
 const ExperienceSchema = z.object({
   id: z.string(),
@@ -96,4 +98,23 @@ export async function deleteResume(id: string) {
   await prisma.resumes.delete({ where: { id } });
   revalidatePath('/dashboard/resumes');
   redirect('/dashboard/resumes');
+}
+
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    await signIn('credentials', formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Someting went wrong.';
+      }
+    }
+    throw error;
+  }
 }

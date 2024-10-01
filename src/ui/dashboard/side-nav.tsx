@@ -1,3 +1,4 @@
+import { signOut } from "@/auth";
 import { Box, List, ListItemButton, ListItemText } from "@mui/material";
 
 const links = [
@@ -8,6 +9,11 @@ const links = [
 ];
 
 export default function SideNav() {
+  const handleSignOut = async () => {
+    'use server';
+    await signOut();
+  };
+
   return (
     <Box sx={{ width: '30%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav>
@@ -18,6 +24,11 @@ export default function SideNav() {
             </ListItemButton>
           </List>
         ))}
+      </nav>
+      <nav>
+        <form action={handleSignOut}>
+          <button>Sign out</button>
+        </form>
       </nav>
     </Box>
   );

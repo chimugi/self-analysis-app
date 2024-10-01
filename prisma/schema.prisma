@@ -11,17 +11,29 @@ datasource db {
 }
 
 model experiences {
-  id            String   @id
+  experienceId  String   @id @default(cuid())
   title         String
   experience    String
   positivePoint Int
   negativePoint Int
   eventDate     DateTime
+  userId        String
+  user          users    @relation(fields: [userId], references: [id])
 }
 
 model resumes {
-  id        String   @id
+  resumeId  String   @id @default(cuid())
   belongsTo String
   startDate DateTime
   endDate   DateTime
+  userId    String
+  user      users    @relation(fields: [userId], references: [id])
+}
+
+model users {
+  id          String        @id @default(cuid())
+  email       String        @unique
+  password    String
+  experiences experiences[]
+  resumes     resumes[]
 }
