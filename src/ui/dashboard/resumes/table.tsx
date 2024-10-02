@@ -25,10 +25,10 @@ export default async function ResumesTable() {
               <TableCell>{resume.endDate.toLocaleDateString()}</TableCell>
               <TableCell>{resume.belongsTo}</TableCell>
               <TableCell>
-                <Button variant="contained" href={`/dashboard/resumes/${resume.id}/edit`}>
+                <Button variant="contained" href={`/dashboard/resumes/${resume.resumeId}/edit`}>
                   Edit
                 </Button>
-                <DeleteAction id={resume.id} action={deleteResume}>
+                <DeleteAction id={resume.resumeId} action={deleteResume}>
                   title: {resume.belongsTo}
                 </DeleteAction>
               </TableCell>

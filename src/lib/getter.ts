@@ -1,30 +1,44 @@
+import { auth } from "@/auth";
+import { User } from "./definission";
 import prisma from "./prisma";
 
-export async function getLatestId() {
-  const latestExperience = await prisma.experiences.findFirst({
-    orderBy: { id: 'desc' },
-    select: { id: true },
-  });
-
-  return latestExperience ? latestExperience.id + 1 : 1;
-}
-
 export async function getExperiences() {
-  return await prisma.experiences.findMany();
+  const user = await getSessionUser();
+  return await prisma.experiences.findMany(
+    { where: { user: { email: user.email } } }
+  );
 }
 
-export async function getExperienceById(id: string) {
+export async function getExperienceById(experienceId: string) {
+  const user = await getSessionUser();
   return await prisma.experiences.findFirst({
-    where: { id },
+    where: { experienceId, user: { email: user.email } },
   });
 }
 
 export async function getResumes() {
-  return await prisma.resumes.findMany();
+  const user = await getSessionUser();
+  return await prisma.resumes.findMany(
+    { where: { user: { email: user.email } } }
+  );
 }
 
-export async function getResumeById(id: string) {
+export async function getResumeById(resumeId: string) {
+  const user = await getSessionUser();
   return await prisma.resumes.findFirst({
-    where: { id },
+    where: { resumeId, user: { email: user.email } },
   });
+}
+
+export async function getUser(email: string): Promise<User | null> {
+  const user = await prisma.users.findFirst({
+    where: { email }
+  });
+  return user;
+}
+
+export async function getSessionUser() {
+  const session = await auth();
+  if (!session || !session.user?.email) throw new Error('User not authenticated');
+  return await getUser(session.user.email) as User;
 }

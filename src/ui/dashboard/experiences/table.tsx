@@ -27,10 +27,10 @@ export default async function ExperiencesTable() {
               <TableCell>{experience.negativePoint}</TableCell>
               <TableCell>{experience.eventDate.toLocaleDateString()}</TableCell>
               <TableCell>
-                <Button variant="contained" href={`/dashboard/experiences/${experience.id}/edit`}>
+                <Button variant="contained" href={`/dashboard/experiences/${experience.experienceId}/edit`}>
                   Edit
                 </Button>
-                <DeleteAction id={experience.id} action={deleteExperience}>
+                <DeleteAction id={experience.experienceId} action={deleteExperience}>
                   title: {experience.title}
                 </DeleteAction>
               </TableCell>

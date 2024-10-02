@@ -3,12 +3,11 @@ import { z } from "zod";
 import prisma from "./prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import cuid from "cuid";
 import { signIn } from "../auth";
 import { AuthError } from "next-auth";
+import { getSessionUser } from "./getter";
 
 const ExperienceSchema = z.object({
-  id: z.string(),
   title: z.string(),
   experience: z.string(),
   positivePoint: z.coerce.number(),
@@ -17,85 +16,94 @@ const ExperienceSchema = z.object({
 });
 
 export async function addExperience(formData: FormData) {
-  const data = Object.fromEntries(formData.entries());
-  const id = cuid();
-  
-  const exp = Object.assign({}, data, { id });
+  const user = await getSessionUser();
+  const exp = Object.fromEntries(formData.entries());
 
   const experience = ExperienceSchema.parse(exp);
   const eventDate = new Date(experience.eventDate).toISOString();
 
   await prisma.experiences.create({
-    data: { ...experience, eventDate},
+    data: {
+      ...experience,
+      eventDate,
+      user: { connect: { email: user.email } },
+    },
   });
 
   revalidatePath('/dashboard/experiences');
   redirect('/dashboard/experiences');
 }
 
-export async function updateExperience(formData: FormData) {
+export async function updateExperience(formData: FormData, experienceId: string) {
+  const user = await getSessionUser();
   const experience = ExperienceSchema.parse(Object.fromEntries(formData.entries()));
-  const id = experience.id;
   const eventDate = new Date(experience.eventDate).toISOString();
 
   await prisma.experiences.update({
-    where: { id },
-    data: { ...experience, eventDate },
+    where: { experienceId },
+    data: {
+      ...experience,
+      eventDate,
+      user: { connect: { email: user.email } },
+    },
   });
 
   revalidatePath('/dashboard/experiences');
   redirect('/dashboard/experiences');
 }
 
-export async function deleteExperience(id: string) {
-  await prisma.experiences.delete({ where: { id } });
+export async function deleteExperience(experienceId: string) {
+  await prisma.experiences.delete({ where: { experienceId } });
   revalidatePath('/dashboard/experiences');
   redirect('/dashboard/experiences');
 }
 
 const ResumesSchema = z.object({
-  id: z.string(),
   belongsTo: z.string(),
   startDate: z.string(),
   endDate: z.string(),
 });
 
 export async function addResume(formData: FormData) {
-  const data = Object.fromEntries(formData.entries());
-  const id = cuid();
-  
-  const resume = Object.assign({}, data, { id });
-  console.log(resume);
+  const user = await getSessionUser();
+  const resume = Object.fromEntries(formData.entries());
 
   const resumeData = ResumesSchema.parse(resume);
   const startDate = new Date(resumeData.startDate).toISOString();
   const endDate = new Date(resumeData.endDate).toISOString();
 
   await prisma.resumes.create({
-    data: { ...resumeData, startDate, endDate },
+    data: {
+      ...resumeData,
+      startDate,
+      endDate,
+      user: { connect: { email: user.email } },
+    },
   });
 
   revalidatePath('/dashboard/resumes');
   redirect('/dashboard/resumes');
 }
 
-export async function updateResume(formData: FormData) {
+export async function updateResume(formData: FormData, resumeId: string) {
+  const user = await getSessionUser();
   const resume = ResumesSchema.parse(Object.fromEntries(formData.entries()));
-  const id = resume.id;
   const startDate = new Date(resume.startDate).toISOString();
   const endDate = new Date(resume.endDate).toISOString();
 
   await prisma.resumes.update({
-    where: { id },
-    data: { ...resume, startDate, endDate },
+    where: { resumeId },
+    data: {
+      ...resume,
+      startDate,
+      endDate,
+      user: { connect: { email: user.email } },
+    },
   });
-
-  revalidatePath('/dashboard/resumes');
-  redirect('/dashboard/resumes');
 }
 
-export async function deleteResume(id: string) {
-  await prisma.resumes.delete({ where: { id } });
+export async function deleteResume(resumeId: string) {
+  await prisma.resumes.delete({ where: { resumeId } });
   revalidatePath('/dashboard/resumes');
   redirect('/dashboard/resumes');
 }
