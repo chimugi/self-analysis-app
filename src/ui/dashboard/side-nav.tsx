@@ -1,5 +1,5 @@
 import { signOut } from "@/auth";
-import { Box, List, ListItemButton, ListItemText } from "@mui/material";
+import Link from "next/link";
 
 const links = [
   { name: 'Home', href: '/dashboard' },
@@ -15,21 +15,20 @@ export default function SideNav() {
   };
 
   return (
-    <Box sx={{ width: '30%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <nav>
-        { links.map(link => (
-          <List key={link.name}>
-            <ListItemButton href={link.href}>
-              <ListItemText primary={link.name} />
-            </ListItemButton>
-          </List>
-        ))}
-      </nav>
-      <nav>
+    <div>
+      {links.map(link => (  
+        <div key={link.name}
+          className="p-3">
+          <Link href={link.href} className="block w-full h-full text-xl hover:bg-sky-100">
+            {link.name}
+          </Link>
+        </div>
+      ))}
+      <div className="p-3">
         <form action={handleSignOut}>
-          <button>Sign out</button>
+          <button className="block w-full h-full text-xl text-left hover:bg-sky-100">Sign out</button>
         </form>
-      </nav>
-    </Box>
+      </div>
+    </div>
   );
 }
