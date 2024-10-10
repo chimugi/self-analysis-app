@@ -61,21 +61,45 @@ const LineChart = ({ labels, positivePoints, negativePoints, belongsToData }: {
         labels: {
           filter: function(item: { text: string }) {
             return item.text !== 'Negative Area';
-          }
+          },
+          font: {
+            size: 16,
+          },
         }
       },
       title: {
         display: true,
-        text: 'Line Chart Example',
+        text: 'Motivation Chart',
+        font: {
+          size: 24,
+        },
       },
     },
-    y: {
-      min: -10,
-      max: 10,
-    }
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 18, // Adjust the size as needed
+          },
+        },
+      },
+      y: {
+        min: -10,
+        max: 10,
+        ticks: {
+          font: {
+            size: 18, // Adjust the size as needed
+          },
+        },
+      },
+    },
   };
 
-  return <Line data={data} options={options} />;
+  return (
+    <Line data={data}
+      options={options}
+      className='flex flex-row px-6 pb-3 max-w-full max-h-full'/>
+  );
 };
 
 export default LineChart;
