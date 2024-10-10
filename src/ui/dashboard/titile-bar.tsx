@@ -21,7 +21,7 @@ export default function TitleBar({ title, actions }: {
               <Button key={action.title}
                 href={action.action}
                 variant='contained'
-                className="px-4 py-2 mx-2 w-full rounded-lg shadow-md text-xl">
+                className="px-6 py-2 w-full rounded-lg shadow-md text-xl">
                 {action.title}
               </Button>
             );
