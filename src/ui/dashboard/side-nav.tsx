@@ -17,18 +17,13 @@ export default function SideNav() {
   return (
     <div>
       {links.map(link => (  
-        <div key={link.name}
-          className="p-3">
-          <Link href={link.href} className="block w-full h-full text-xl hover:bg-sky-100">
-            {link.name}
-          </Link>
-        </div>
+        <Link key={link.name} href={link.href} className="block p-3 w-full h-full text-xl hover:bg-sky-100">
+          {link.name}
+        </Link>
       ))}
-      <div className="p-3">
-        <form action={handleSignOut}>
-          <button className="block w-full h-full text-xl text-left hover:bg-sky-100">Sign out</button>
-        </form>
-      </div>
+      <form action={handleSignOut}>
+        <button className="block p-3 w-full h-full text-xl text-left hover:bg-sky-100">Sign out</button>
+      </form>
     </div>
   );
 }
