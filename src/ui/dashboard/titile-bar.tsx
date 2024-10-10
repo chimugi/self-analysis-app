@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Button } from "@mui/material";
 
 export default function TitleBar({ title, actions }: {
   title: string;
@@ -18,11 +18,12 @@ export default function TitleBar({ title, actions }: {
         {actions?.map(action => {
           if (typeof action.action === 'string') {
             return (
-              <Link key={action.title}
+              <Button key={action.title}
                 href={action.action}
-                className="px-6 py-2 mx-2 w-full rounded-lg shadow-md text-2xl bg-blue-100 hover:bg-sky-100">
+                variant='contained'
+                className="px-4 py-2 mx-2 w-full rounded-lg shadow-md text-xl">
                 {action.title}
-              </Link>
+              </Button>
             );
           } else {
             // TODO: Add function type.
