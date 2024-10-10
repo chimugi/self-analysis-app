@@ -9,10 +9,10 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex h-screen flex-row overflow-hidden">
-      <div className="flex-none w-64 shadow-md">
+      <div className="bg-gray-200 flex-none w-64 shadow-xl">
         <SideNav />
       </div>
-      <div className="flex-grow h-full">
+      <div className="bg-gray-100 flex-grow h-full">
         {children}
       </div>
     </div>

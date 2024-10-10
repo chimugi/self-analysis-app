@@ -1,12 +1,6 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import DeleteAction from "./delete-action";
-
-function convertToPascalCaseWithSpaces(input: string): string {
-  const pascalCase = input.replace(/(^\w|[A-Z]|\b\w)/g, (match, index) => {
-    return index === 0 ? match.toUpperCase() : ` ${match.toUpperCase()}`;
-  }).replace(/\s+/g, '');
-  return pascalCase.replace(/([A-Z])/g, ' $1').trim();
-}
+import { convertToPascalCaseWithSpaces } from "@/lib/util";
 
 export default function MyTable({ id, columns, dataSource, editAction, deleteAction }: {
   id: string;
@@ -22,6 +16,7 @@ export default function MyTable({ id, columns, dataSource, editAction, deleteAct
     action: (id: string) => Promise<void>;
   };
 }) {
+  const convertedId = convertToPascalCaseWithSpaces(id);
   return (
     <div className="flex flex-row m-6">
       <TableContainer component={Paper}>
@@ -29,7 +24,7 @@ export default function MyTable({ id, columns, dataSource, editAction, deleteAct
           <TableHead>
             <TableRow>
               {columns.map((column, index) => (
-                <TableCell key={index}>{convertToPascalCaseWithSpaces(column)}</TableCell>
+                <TableCell key={index}>{convertedId}</TableCell>
               ))}
               {(() => {
                 if (editAction || deleteAction) {
