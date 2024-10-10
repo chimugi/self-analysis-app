@@ -1,16 +1,16 @@
 import ExperiencesTable from "@/ui/dashboard/experiences/table";
-import { Button } from "@mui/material";
+import TitleBar from "@/ui/dashboard/titile-bar";
 
 export default function Experiences() {
+  const titleActions = [{
+    title: 'Add',
+    action: '/dashboard/experiences/add',
+  }];
+
   return (
-    <div>
-      <div>
-        <span> Experiences </span>
-        <Button variant="contained" href="/dashboard/experiences/add">
-          Add
-        </Button>
-      </div>
+    <>
+      <TitleBar title="Experiences" actions={titleActions} />
       <ExperiencesTable />
-    </div>
+    </>
   );
 }

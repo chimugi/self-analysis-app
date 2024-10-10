@@ -1,16 +1,16 @@
 import ResumesTable from "@/ui/dashboard/resumes/table";
-import { Button } from "@mui/material";
+import TitleBar from "@/ui/dashboard/titile-bar";
 
 export default function Resumes() {
+  const titleActions = [{
+    title: 'Add',
+    action: '/dashboard/resumes/add',
+  }];
+
   return (
-    <div>
-      <div>
-        <span> Resumes </span>
-        <Button variant="contained" href="/dashboard/resumes/add">
-          Add
-        </Button>
-      </div>
+    <>
+      <TitleBar title="Resumes" actions={titleActions} />
       <ResumesTable />
-    </div>
+    </>
   );
 }
