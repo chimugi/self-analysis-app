@@ -16,7 +16,6 @@ export default function MyTable({ id, columns, dataSource, editAction, deleteAct
     action: (id: string) => Promise<void>;
   };
 }) {
-  const convertedId = convertToPascalCaseWithSpaces(id);
   return (
     <div className="flex flex-row m-6">
       <TableContainer component={Paper}>
@@ -24,7 +23,7 @@ export default function MyTable({ id, columns, dataSource, editAction, deleteAct
           <TableHead>
             <TableRow>
               {columns.map((column, index) => (
-                <TableCell key={index}>{convertedId}</TableCell>
+                <TableCell key={index}>{convertToPascalCaseWithSpaces(column)}</TableCell>
               ))}
               {(() => {
                 if (editAction || deleteAction) {
