@@ -96,9 +96,11 @@ const LineChart = ({ labels, positivePoints, negativePoints, belongsToData }: {
   };
 
   return (
-    <Line data={data}
-      options={options}
-      className='flex flex-row px-6 pb-3 max-w-full max-h-full'/>
+    <div className='flex max-w-full max-h-full bg-white mx-6 p-6'>
+      <Line data={data}
+        options={options}
+        className='flex flex-row w-full h-full'/>
+    </div>
   );
 };
 
