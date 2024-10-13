@@ -17,7 +17,7 @@ export default function MyTable({ id, columns, dataSource, editAction, deleteAct
   };
 }) {
   return (
-    <div className="flex flex-row m-6">
+    <div className="flex flex-row mx-6">
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -42,21 +42,23 @@ export default function MyTable({ id, columns, dataSource, editAction, deleteAct
                     return <TableCell key={index}>{row[column]}</TableCell>;
                   }
                 })}
-                <TableCell className="flex flex-row">
-                  {editAction && (
-                    <Button variant='outlined' href={editAction.action(row[id])}
-                      className="px-2">
-                      {editAction.title}
-                    </Button>
-                  )}
-                  {deleteAction && (
-                    <div className="px-2">
-                      <DeleteAction id={row[id]} action={deleteAction.action}>
-                        target: {row[deleteAction.target]}
-                      </DeleteAction>
-                    </div>
-                  )}
-                </TableCell>
+                { (editAction || deleteAction) && (
+                  <TableCell className="flex flex-row">
+                    {editAction && (
+                      <Button variant='outlined' href={editAction.action(row[id])}
+                        className="px-2">
+                        {editAction.title}
+                      </Button>
+                    )}
+                    {deleteAction && (
+                      <div className="px-2">
+                        <DeleteAction id={row[id]} action={deleteAction.action}>
+                          target: {row[deleteAction.target]}
+                        </DeleteAction>
+                      </div>
+                    )}
+                  </TableCell>
+                )}
               </TableRow>
             ))}
           </TableBody>

@@ -40,7 +40,7 @@ export default function MyForm({ columns, onSubmit, cancelRedirectTo }: {
 
   return (
     <form action={onSubmit}
-      className="bg-white mx-6 p-6 rounded-lg shadow-md">
+      className="bg-white mx-6 p-6 rounded shadow-md">
       {columns.map((col) => {
         if (col.type === 'number' || col.type === 'text') {
           return <MyInput key={col.name} col={col} />;
