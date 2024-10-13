@@ -22,9 +22,9 @@ export default async function Edit({ params }: { params: { id: string } }) {
     <>
       <TitleBar title="Edit Resume" />
       <MyForm columns={[
-        { name: 'belongsTo', type: 'input', defaultValue: resume?.belongsTo },
-        { name: 'startDate', type: 'date-picker', defaultValue: resume?.startDate },
-        { name: 'endDate', type: 'date-picker', defaultValue: resume?.endDate },
+        { name: 'belongsTo', type: 'text', defaultValue: resume?.belongsTo, required: true },
+        { name: 'startDate', type: 'date-picker', defaultValue: resume?.startDate, required: true },
+        { name: 'endDate', type: 'date-picker', defaultValue: resume?.endDate, required: true },
       ]} onSubmit={handleSubmit} cancelRedirectTo="/dashboard/resumes" />
     </>
   );

@@ -19,6 +19,7 @@ export default function MyDatePicker(
         selected={date}
         onChange={(date) => setDate(date)}
         dateFormat="yyyy-MM-dd"
+        required
         className="
           appearance-none relative block
           w-full px-3 py-2 rounded-md

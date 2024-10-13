@@ -3,24 +3,29 @@ import MyDatePicker from "./date-picker";
 import MyInput from "./input";
 import { useRouter } from "next/navigation";
 
-type IdColumn = {
-  type: 'id';
-  defaultValue?: string;
+type ColumnBase<T> = {
+  defaultValue?: T;
+  required?: boolean;
 };
 
-type InputColumn = {
+export type NumberInputColumn = ColumnBase<number> & {
   name: string;
-  type: 'input';
-  defaultValue?: string | number;
+  type: 'number';
+  min?: number;
+  max?: number;
 };
 
-type DatePickerColumn = {
+export type TextInputColumn = ColumnBase<string> & {
+  name: string;
+  type: 'text';
+};
+
+type DatePickerColumn = ColumnBase<Date> & {
   name: 'eventDate' | 'startDate' | 'endDate';
   type: 'date-picker';
-  defaultValue?: Date;
 };
 
-type Column = InputColumn | DatePickerColumn | IdColumn;
+type Column = NumberInputColumn | TextInputColumn | DatePickerColumn;
 
 export default function MyForm({ columns, onSubmit, cancelRedirectTo }: {
   columns: Column[],
@@ -37,8 +42,8 @@ export default function MyForm({ columns, onSubmit, cancelRedirectTo }: {
     <form action={onSubmit}
       className="bg-white mx-6 p-6 rounded-lg shadow-md">
       {columns.map((col) => {
-        if (col.type === 'input') {
-          return <MyInput key={col.name} id={col.name} defaultValue={col.defaultValue} />;
+        if (col.type === 'number' || col.type === 'text') {
+          return <MyInput key={col.name} col={col} />;
         } else if (col.type === 'date-picker') {
           return <MyDatePicker key={col.name} id={col.name} defaultValue={col.defaultValue} />;
         }

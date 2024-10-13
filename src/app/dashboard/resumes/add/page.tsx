@@ -7,9 +7,9 @@ export default function Add() {
     <>
       <TitleBar title="Add Resume" />
       <MyForm columns={[
-        { name: 'belongsTo', type: 'input' },
-        { name: 'startDate', type: 'date-picker' },
-        { name: 'endDate', type: 'date-picker' },
+        { name: 'belongsTo', type: 'text', required: true },
+        { name: 'startDate', type: 'date-picker', required: true },
+        { name: 'endDate', type: 'date-picker', required: true },
       ]} onSubmit={addResume} cancelRedirectTo="/dashboard/resumes" />
     </>
   );

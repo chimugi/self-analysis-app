@@ -22,12 +22,11 @@ export default async function Edit({ params }: { params: { id: string } }) {
     <>
       <TitleBar title="Edit Experience" />
       <MyForm columns={[
-        { type: 'id', defaultValue: id },
-        { name: 'title', type: 'input', defaultValue: experience?.title },
-        { name: 'experience', type: 'input', defaultValue: experience?.experience },
-        { name: 'positivePoint', type: 'input', defaultValue: experience?.positivePoint },
-        { name: 'negativePoint', type: 'input', defaultValue: experience?.negativePoint },
-        { name: 'eventDate', type: 'date-picker', defaultValue: experience?.eventDate },
+        { name: 'title', type: 'text', defaultValue: experience?.title, required: true },
+        { name: 'experience', type: 'text', defaultValue: experience?.experience, required: true },
+        { name: 'positivePoint', type: 'number', defaultValue: experience?.positivePoint, required: true, min: 0, max:10 },
+        { name: 'negativePoint', type: 'number', defaultValue: experience?.negativePoint, required: true, min: 0, max:10 },
+        { name: 'eventDate', type: 'date-picker', defaultValue: experience?.eventDate, required: true },
       ]} onSubmit={handleSubmit} cancelRedirectTo="/dashboard/experiences" />
     </>
   );

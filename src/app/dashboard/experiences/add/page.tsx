@@ -7,11 +7,11 @@ export default function Add() {
     <>
       <TitleBar title="Add Experience" />
       <MyForm columns={[
-        { name: 'title', type: 'input' },
-        { name: 'experience', type: 'input' },
-        { name: 'positivePoint', type: 'input' },
-        { name: 'negativePoint', type: 'input' },
-        { name: 'eventDate', type: 'date-picker' },
+        { name: 'title', type: 'text', required: true },
+        { name: 'experience', type: 'text', required: true },
+        { name: 'positivePoint', type: 'number', required: true, min: 0, max: 10 },
+        { name: 'negativePoint', type: 'number', required: true, min: 0, max: 10 },
+        { name: 'eventDate', type: 'date-picker', required: true },
       ]} onSubmit={addExperience} cancelRedirectTo="/dashboard/experiences"/>
     </>
   );
