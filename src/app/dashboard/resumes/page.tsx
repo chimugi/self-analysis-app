@@ -1,11 +1,13 @@
-import ResumesTable from "@/ui/dashboard/resumes/table";
-import TitleBar from "@/ui/dashboard/titile-bar";
+import ResumesTable from '@/ui/dashboard/resumes/table';
+import TitleBar from '@/ui/dashboard/titile-bar';
 
 export default function Resumes() {
-  const titleActions = [{
-    title: 'Add',
-    action: '/dashboard/resumes/add',
-  }];
+  const titleActions = [
+    {
+      title: 'Add',
+      action: '/dashboard/resumes/add'
+    }
+  ];
 
   return (
     <>

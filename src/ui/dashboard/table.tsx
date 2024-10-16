@@ -1,8 +1,14 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { convertToPascalCaseWithSpaces } from "@/lib/util";
-import DeleteAction from "./delete-action";
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { convertToPascalCaseWithSpaces } from '@/lib/util';
+import DeleteAction from './delete-action';
 
-export default function MyTable({ id, columns, dataSource, editAction, deleteAction }: {
+export default function MyTable({
+  id,
+  columns,
+  dataSource,
+  editAction,
+  deleteAction
+}: {
   id: string;
   columns: string[];
   dataSource: {
@@ -29,7 +35,7 @@ export default function MyTable({ id, columns, dataSource, editAction, deleteAct
               ))}
               {(() => {
                 if (editAction || deleteAction) {
-                  return <TableCell>Actions</TableCell>
+                  return <TableCell>Actions</TableCell>;
                 }
               })()}
             </TableRow>
@@ -44,11 +50,10 @@ export default function MyTable({ id, columns, dataSource, editAction, deleteAct
                     return <TableCell key={index}>{row[column]}</TableCell>;
                   }
                 })}
-                { (editAction || deleteAction) && (
+                {(editAction || deleteAction) && (
                   <TableCell className="flex flex-row">
                     {editAction && (
-                      <Button variant='outlined' href={editAction.action(row[id])}
-                        className="px-2">
+                      <Button variant="outlined" href={editAction.action(row[id])} className="px-2">
                         {editAction.title}
                       </Button>
                     )}

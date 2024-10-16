@@ -1,9 +1,9 @@
 'use client';
-import { useState } from "react";
+import { useState } from 'react';
 import { getMonth, getYear } from 'date-fns';
-import DatePicker from "react-datepicker";
-import { convertToPascalCaseWithSpaces } from "@/lib/util";
-import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from 'react-datepicker';
+import { convertToPascalCaseWithSpaces } from '@/lib/util';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function range(start: number, end: number, step: number = 1): number[] {
   const result = [];
@@ -13,17 +13,30 @@ function range(start: number, end: number, step: number = 1): number[] {
   return result;
 }
 
-export default function MyDatePicker(
-  { id, defaultValue }: { id: 'eventDate' | 'startDate' | 'endDate', defaultValue?: Date}
-) {
+export default function MyDatePicker({
+  id,
+  defaultValue
+}: {
+  id: 'eventDate' | 'startDate' | 'endDate';
+  defaultValue?: Date;
+}) {
   const [date, setDate] = useState<Date | null>(defaultValue ?? null);
   const convertedId = convertToPascalCaseWithSpaces(id);
 
   const years = range(1990, getYear(new Date()) + 1, 1);
   const months = [
-    "January", "February", "March", "April",
-    "May", "June", "July", "August",
-    "September","October", "November", "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
   ];
 
   return (
@@ -37,17 +50,17 @@ export default function MyDatePicker(
           decreaseMonth,
           increaseMonth,
           prevMonthButtonDisabled,
-          nextMonthButtonDisabled,
+          nextMonthButtonDisabled
         }) => (
           <div
             style={{
               margin: 10,
-              display: "flex",
-              justifyContent: "center",
+              display: 'flex',
+              justifyContent: 'center'
             }}
           >
             <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
-              {"<"}
+              {'<'}
             </button>
             <select
               value={getYear(date)}
@@ -62,9 +75,7 @@ export default function MyDatePicker(
 
             <select
               value={months[getMonth(date)]}
-              onChange={({ target: { value } }) =>
-                changeMonth(months.indexOf(value))
-              }
+              onChange={({ target: { value } }) => changeMonth(months.indexOf(value))}
             >
               {months.map((option) => (
                 <option key={option} value={option}>
@@ -74,7 +85,7 @@ export default function MyDatePicker(
             </select>
 
             <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
-              {">"}
+              {'>'}
             </button>
           </div>
         )}

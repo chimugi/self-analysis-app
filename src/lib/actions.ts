@@ -1,18 +1,18 @@
 'use server';
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { AuthError } from "next-auth";
-import { z } from "zod";
-import { signIn } from "../auth";
-import { getSessionUser } from "./getter";
-import prisma from "./prisma";
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { AuthError } from 'next-auth';
+import { z } from 'zod';
+import { signIn } from '../auth';
+import { getSessionUser } from './getter';
+import prisma from './prisma';
 
 const ExperienceSchema = z.object({
   title: z.string(),
   experience: z.string(),
   positivePoint: z.coerce.number(),
   negativePoint: z.coerce.number(),
-  eventDate: z.string(),
+  eventDate: z.string()
 });
 
 export async function addExperience(formData: FormData) {
@@ -26,8 +26,8 @@ export async function addExperience(formData: FormData) {
     data: {
       ...experience,
       eventDate,
-      user: { connect: { email: user.email } },
-    },
+      user: { connect: { email: user.email } }
+    }
   });
 
   revalidatePath('/dashboard/experiences');
@@ -44,8 +44,8 @@ export async function updateExperience(formData: FormData, experienceId: string)
     data: {
       ...experience,
       eventDate,
-      user: { connect: { email: user.email } },
-    },
+      user: { connect: { email: user.email } }
+    }
   });
 
   revalidatePath('/dashboard/experiences');
@@ -61,7 +61,7 @@ export async function deleteExperience(experienceId: string) {
 const ResumesSchema = z.object({
   belongsTo: z.string(),
   startDate: z.string(),
-  endDate: z.string(),
+  endDate: z.string()
 });
 
 export async function addResume(formData: FormData) {
@@ -77,8 +77,8 @@ export async function addResume(formData: FormData) {
       ...resumeData,
       startDate,
       endDate,
-      user: { connect: { email: user.email } },
-    },
+      user: { connect: { email: user.email } }
+    }
   });
 
   revalidatePath('/dashboard/resumes');
@@ -97,8 +97,8 @@ export async function updateResume(formData: FormData, resumeId: string) {
       ...resume,
       startDate,
       endDate,
-      user: { connect: { email: user.email } },
-    },
+      user: { connect: { email: user.email } }
+    }
   });
 }
 
@@ -108,10 +108,7 @@ export async function deleteResume(resumeId: string) {
   redirect('/dashboard/resumes');
 }
 
-export async function authenticate(
-  prevState: string | undefined,
-  formData: FormData
-) {
+export async function authenticate(prevState: string | undefined, formData: FormData) {
   try {
     await signIn('credentials', formData);
   } catch (error) {
