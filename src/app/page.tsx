@@ -1,7 +1,3 @@
 export default function Home() {
-  return (
-    <div>
-      hoge
-    </div>
-  );
+  return <div>hoge</div>;
 }
