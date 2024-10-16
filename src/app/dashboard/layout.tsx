@@ -12,7 +12,7 @@ export default function RootLayout({
       <div className="bg-gray-200 flex-none w-64 shadow-xl">
         <SideNav />
       </div>
-      <div className="bg-gray-100 flex-grow h-full">
+      <div className="bg-gray-100 flex-grow h-full overflow-y-auto">
         {children}
       </div>
     </div>

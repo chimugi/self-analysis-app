@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "rmm": "rm -rf node_modules && pnpm i && npx prisma generate"
   },
   "peerDependencies": {
     "react": "^18",

@@ -27,7 +27,7 @@ export default async function Edit({ params }: { params: { id: string } }) {
         <div className="w-1/2">
           <MyForm columns={[
             { name: 'title', type: 'text', defaultValue: experience?.title, required: true },
-            { name: 'experience', type: 'text', defaultValue: experience?.experience, required: true },
+            { name: 'experience', type: 'text', defaultValue: experience?.experience },
             { name: 'positivePoint', type: 'number', defaultValue: experience?.positivePoint, required: true, min: 0, max:10 },
             { name: 'negativePoint', type: 'number', defaultValue: experience?.negativePoint, required: true, min: 0, max:10 },
             { name: 'eventDate', type: 'date-picker', defaultValue: experience?.eventDate, required: true },
