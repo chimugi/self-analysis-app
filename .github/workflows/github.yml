@@ -10,6 +10,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: '9.10.0'
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -28,6 +33,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: '9.10.0'
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -45,6 +55,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: '9.10.0'
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
