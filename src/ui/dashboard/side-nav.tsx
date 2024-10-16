@@ -1,5 +1,5 @@
-import { signOut } from "@/auth";
 import Link from "next/link";
+import { signOut } from "@/auth";
 
 const links = [
   { name: 'Home', href: '/dashboard' },

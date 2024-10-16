@@ -1,6 +1,6 @@
 'use client';
-import { authenticate } from "@/lib/actions";
 import { useActionState } from "react";
+import { authenticate } from "@/lib/actions";
 
 export default function LoginForm() {
   const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined);

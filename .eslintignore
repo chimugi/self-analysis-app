@@ -7,3 +7,5 @@ public
 tailwind.config.js
 next.config.js
 postcss.config.js
+jest.config.js
+__tests__

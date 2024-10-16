@@ -1,6 +1,6 @@
+import { deleteExperience } from "@/lib/actions";
 import { getExperiences } from "@/lib/getter";
 import MyTable from "../table";
-import { deleteExperience } from "@/lib/actions";
 
 export default async function ExperiencesTable() {
   const experiences = await getExperiences();

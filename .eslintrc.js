@@ -3,7 +3,6 @@ module.exports = {
   extends: [
     "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
-    "next/typescript"
   ],
   plugins: ["unused-imports"],
   parser: "@typescript-eslint/parser",
@@ -16,7 +15,8 @@ module.exports = {
     "@typescript-eslint/no-unsafe-call": "error",
     "@typescript-eslint/no-unsafe-member-access": "error",
     "@typescript-eslint/no-unsafe-return": "error",
-    "unused-imports/no-unused-imports-ts": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars":"off",
     "import/order": [
      "error",
       {

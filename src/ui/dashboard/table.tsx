@@ -1,12 +1,14 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import DeleteAction from "./delete-action";
 import { convertToPascalCaseWithSpaces } from "@/lib/util";
+import DeleteAction from "./delete-action";
 
 export default function MyTable({ id, columns, dataSource, editAction, deleteAction }: {
   id: string;
   columns: string[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dataSource: any[];
+  dataSource: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+  }[];
   editAction?: {
     title: string;
     action: (id: string) => string;

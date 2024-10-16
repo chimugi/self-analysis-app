@@ -1,10 +1,10 @@
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { updateExperience } from "@/lib/actions";
 import { getExperienceById, getResumes } from "@/lib/getter";
 import MyForm from "@/ui/dashboard/form";
 import MyTable from "@/ui/dashboard/table";
 import TitleBar from "@/ui/dashboard/titile-bar";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 export default async function Edit({ params }: { params: { id: string } }) {
   const id = params.id;

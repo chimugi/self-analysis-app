@@ -1,5 +1,5 @@
-import { getResumes } from "@/lib/getter";
 import { deleteResume } from "@/lib/actions";
+import { getResumes } from "@/lib/getter";
 import MyTable from "../table";
 
 export default async function ResumesTable() {
