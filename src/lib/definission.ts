@@ -1,5 +1,5 @@
 export type Experience = {
-  id: string;
+  experienceId: string;
   title: string;
   experience: string;
   positivePoint: number;
@@ -8,7 +8,7 @@ export type Experience = {
 };
 
 export type Resume = {
-  id: string;
+  resumeId: string;
   belongsTo: string;
   startDate: Date;
   endDate: Date;
