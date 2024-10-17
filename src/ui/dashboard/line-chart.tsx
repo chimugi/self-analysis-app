@@ -111,8 +111,8 @@ const LineChart = ({
   };
 
   return (
-    <div className="flex max-w-full max-h-full bg-white mx-6 p-6">
-      <Line data={data} options={options} className="flex flex-row w-full h-full" />
+    <div className="mx-6 flex max-h-full max-w-full bg-white p-6">
+      <Line data={data} options={options} className="flex size-full flex-row" />
     </div>
   );
 };

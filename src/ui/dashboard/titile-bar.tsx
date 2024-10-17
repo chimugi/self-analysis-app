@@ -13,8 +13,8 @@ export default function TitleBar({
   }[];
 }) {
   return (
-    <div className="flex flex-row m-6">
-      <div className="items-left text-3xl">{title}</div>
+    <div className="m-6 flex flex-row">
+      <div className="text-left text-3xl">{title}</div>
       <div className="ml-auto">
         {actions?.map((action) => {
           if (typeof action.action === 'string') {
@@ -23,7 +23,7 @@ export default function TitleBar({
                 key={action.title}
                 href={action.action}
                 variant="contained"
-                className="px-6 py-2 w-full rounded-lg shadow-md text-xl"
+                className="w-full rounded-lg px-6 py-2 text-xl shadow-md"
               >
                 {action.title}
               </Button>

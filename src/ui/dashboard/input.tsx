@@ -19,10 +19,10 @@ export default function MyInput({ col }: { col: NumberInputColumn | TextInputCol
               min={col.min}
               max={col.max}
               className="
-                appearance-none relative block
-                w-full px-3 py-2 rounded-md
-                border border-gray-300 placeholder-gray-500 text-gray-900
-                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm
+                relative block w-full
+                appearance-none rounded-md border border-gray-300
+                px-3 py-2 text-gray-900 placeholder:text-gray-500
+                focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm
               "
             />
           );
@@ -35,10 +35,10 @@ export default function MyInput({ col }: { col: NumberInputColumn | TextInputCol
               defaultValue={defaultValue}
               required={required}
               className="
-                appearance-none relative block
-                w-full px-3 py-2 rounded-md
-                border border-gray-300 placeholder-gray-500 text-gray-900
-                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm
+                relative block w-full
+                appearance-none rounded-md border border-gray-300
+                px-3 py-2 text-gray-900 placeholder:text-gray-500
+                focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm
               "
             />
           );

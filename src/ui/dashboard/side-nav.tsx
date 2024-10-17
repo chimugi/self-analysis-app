@@ -17,12 +17,12 @@ export default function SideNav() {
   return (
     <div>
       {links.map((link) => (
-        <Link key={link.name} href={link.href} className="block p-3 w-full h-full text-xl hover:bg-sky-100">
+        <Link key={link.name} href={link.href} className="block size-full p-3 text-xl hover:bg-sky-100">
           {link.name}
         </Link>
       ))}
       <form action={handleSignOut}>
-        <button className="block p-3 w-full h-full text-xl text-left hover:bg-sky-100">Sign out</button>
+        <button className="block size-full p-3 text-left text-xl hover:bg-sky-100">Sign out</button>
       </form>
     </div>
   );
