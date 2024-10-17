@@ -25,7 +25,7 @@ export default function MyTable({
   };
 }) {
   return (
-    <div className="flex flex-row mx-6">
+    <div className="mx-6 flex flex-row">
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
